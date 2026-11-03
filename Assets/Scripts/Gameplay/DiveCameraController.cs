@@ -8,7 +8,7 @@ public class DiveCameraController : MonoBehaviour
 
     [Header("Kecepatan & Kedalaman")]
     [Tooltip("Kecepatan normal turun per detik (dalam unit Unity)")]
-    public float normalSpeed = 6f; // ~60m/detik, tembus 11.000m dalam ~3 menit
+    public float normalSpeed = -2f; // ~60m/detik, tembus 11.000m dalam ~3 menit
     public float currentSpeed;
 
     [Tooltip("Target kedalaman terbawah (11.000m = -1100 unit Y)")]
