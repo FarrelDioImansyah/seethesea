@@ -8,6 +8,7 @@ public class KinectInputManager : MonoBehaviour
     public bool useMouseForDebug = true;
 
     [Header("Idle Timeout")]
+    public bool enableIdleTimeout = false;
     public float idleTimeoutSeconds = 15f;
 
     public Vector2 HandScreenPosition { get; private set; }
@@ -41,19 +42,22 @@ public class KinectInputManager : MonoBehaviour
             IsHandRaisedAboveShoulder = Input.GetKey(KeyCode.Space) || Input.GetMouseButton(1);
         }
 
-        // Deteksi Idle Timeout jika mouse tidak bergerak sama sekali
-        if (Vector2.Distance(HandScreenPosition, lastMousePosition) < 0.5f && !IsHandRaisedAboveShoulder)
+        // Deteksi Idle Timeout jika fitur diaktifkan
+        if (enableIdleTimeout)
         {
-            idleTimer += Time.deltaTime;
-            if (idleTimer >= idleTimeoutSeconds)
+            if (Vector2.Distance(HandScreenPosition, lastMousePosition) < 0.5f && !IsHandRaisedAboveShoulder)
             {
-                OnIdleTimeout();
+                idleTimer += Time.deltaTime;
+                if (idleTimer >= idleTimeoutSeconds)
+                {
+                    OnIdleTimeout();
+                    idleTimer = 0f;
+                }
+            }
+            else
+            {
                 idleTimer = 0f;
             }
-        }
-        else
-        {
-            idleTimer = 0f;
         }
 
         lastMousePosition = HandScreenPosition;

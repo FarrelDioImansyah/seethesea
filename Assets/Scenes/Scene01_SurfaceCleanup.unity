@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 89174940}
   - component: {fileID: 89174939}
   - component: {fileID: 89174938}
+  - component: {fileID: 89174942}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -380,6 +381,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 89174936}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &89174942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89174936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912e393fdff8bcd4f9abbd7288df37af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalDuration: 1
+  maxScaleMultiplier: 1.5
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &231988727
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,6 +501,7 @@ GameObject:
   - component: {fileID: 402655040}
   - component: {fileID: 402655039}
   - component: {fileID: 402655038}
+  - component: {fileID: 402655042}
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Untagged
@@ -596,6 +613,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402655036}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &402655042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402655036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912e393fdff8bcd4f9abbd7288df37af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalDuration: 1
+  maxScaleMultiplier: 1.5
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &464921385
 GameObject:
   m_ObjectHideFlags: 0
@@ -815,6 +847,7 @@ GameObject:
   - component: {fileID: 940276469}
   - component: {fileID: 940276468}
   - component: {fileID: 940276467}
+  - component: {fileID: 940276471}
   m_Layer: 0
   m_Name: Cube (4)
   m_TagString: Untagged
@@ -926,6 +959,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940276465}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &940276471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940276465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912e393fdff8bcd4f9abbd7288df37af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalDuration: 1
+  maxScaleMultiplier: 1.5
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1041988980
 GameObject:
   m_ObjectHideFlags: 0
@@ -1179,6 +1227,7 @@ GameObject:
   - component: {fileID: 1717776045}
   - component: {fileID: 1717776044}
   - component: {fileID: 1717776043}
+  - component: {fileID: 1717776047}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -1290,6 +1339,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1717776041}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1717776047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717776041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912e393fdff8bcd4f9abbd7288df37af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalDuration: 1
+  maxScaleMultiplier: 1.5
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1718586673
 GameObject:
   m_ObjectHideFlags: 0
@@ -1303,6 +1367,7 @@ GameObject:
   - component: {fileID: 1718586677}
   - component: {fileID: 1718586676}
   - component: {fileID: 1718586675}
+  - component: {fileID: 1718586679}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -1414,6 +1479,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1718586673}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1718586679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718586673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912e393fdff8bcd4f9abbd7288df37af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalDuration: 1
+  maxScaleMultiplier: 1.5
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1852383926
 GameObject:
   m_ObjectHideFlags: 0

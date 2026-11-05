@@ -56,13 +56,27 @@ public class MainMenuManager : MonoBehaviour
     public void SelectStoryMode()
     {
         Debug.Log("[MainMenu] Memilih Story Mode -> Pindah ke Scene01_SurfaceCleanup");
-        SceneManager.LoadScene("Scene01_SurfaceCleanup");
+        if (GameFlowManager.Instance != null)
+        {
+            GameFlowManager.Instance.StartStoryMode();
+        }
+        else
+        {
+            SceneManager.LoadScene("Scene01_SurfaceCleanup");
+        }
     }
 
     public void SelectDirectDiveMode()
     {
         Debug.Log("[MainMenu] Memilih Langsung Selam -> Pindah ke Scene02_DeepSeaDive");
-        SceneManager.LoadScene("Scene02_DeepSeaDive");
+        if (GameFlowManager.Instance != null)
+        {
+            GameFlowManager.Instance.StartDirectDive();
+        }
+        else
+        {
+            SceneManager.LoadScene("Scene02_DeepSeaDive");
+        }
     }
 
 }

@@ -7,13 +7,17 @@ public class DynamicVignette : MonoBehaviour
     public Camera mainCamera;
     public Volume globalVolume;
 
-    [Header("Camera Y")]
-    public float minCameraY = 0f;
-    public float maxCameraY = 10f;
+    [Header("Camera Y (Kedalaman 0 sampai -100 unit = 1000m)")]
+    public float surfaceCameraY = 0f;      // Y di permukaan (0m)
+    public float deepCameraY = -100f;      // Y di dasar target (1000m)
 
-    [Header("Vignette")]
-    public float minIntensity = 0.1f;
-    public float maxIntensity = 0.8f;
+    [Header("Vignette Intensity")]
+    public float minIntensity = 0.15f;     // Intensitas di permukaan (terang)
+    public float maxIntensity = 0.85f;     // Intensitas di kedalaman (gelap menyempit)
+
+    [Header("Vignette Smoothness (Makin dalam makin sempit)")]
+    public float surfaceSmoothness = 0.2f;
+    public float deepSmoothness = 0.7f;
 
     [Header("Mouse")]
     public float mouseSmoothSpeed = 5f;
@@ -51,39 +55,39 @@ public class DynamicVignette : MonoBehaviour
         if (vignette == null)
             return;
 
+        if (KinectInputManager.Instance == null)
+            return;
+
         // =========================
-        // CAMERA Y → INTENSITY
+        // CAMERA Y → INTENSITY & SMOOTHNESS
         // =========================
 
         float cameraY = mainCamera.transform.position.y;
 
-        float normalizedY = Mathf.InverseLerp(
-            minCameraY,
-            maxCameraY,
-            cameraY
-        );
+        // Progress kedalaman dari 0f (permukaan) ke 1f (1000m / deepCameraY)
+        float depthProgress = Mathf.InverseLerp(surfaceCameraY, deepCameraY, cameraY);
 
-        float intensity = Mathf.Lerp(
-            minIntensity,
-            maxIntensity,
-            normalizedY
-        );
-
+        float intensity = Mathf.Lerp(minIntensity, maxIntensity, depthProgress);
         vignette.intensity.value = intensity;
 
+        // Vignette makin menyempit/tajam seiring makin dalam
+        float smoothness = Mathf.Lerp(surfaceSmoothness, deepSmoothness, depthProgress);
+        vignette.smoothness.value = smoothness;
+
 
         // =========================
-        // MOUSE → CENTER
+        // MOUSE / KINECT → CENTER
         // =========================
 
-        Vector2 mousePosition = new Vector2(
-            Input.mousePosition.x / Screen.width,
-            Input.mousePosition.y / Screen.height
+        Vector2 handPos = KinectInputManager.Instance.HandScreenPosition;
+        Vector2 normalizedPos = new Vector2(
+            handPos.x / Screen.width,
+            handPos.y / Screen.height
         );
 
         currentCenter = Vector2.Lerp(
             currentCenter,
-            mousePosition,
+            normalizedPos,
             Time.deltaTime * mouseSmoothSpeed
         );
 

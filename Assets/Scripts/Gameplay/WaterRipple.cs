@@ -25,10 +25,13 @@ public class WaterRipple : MonoBehaviour
 
     void Update()
     {
+        if (KinectInputManager.Instance == null)
+            return;
+
         // Klik air
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            Ray ray = cam.ScreenPointToRay(KinectInputManager.Instance.HandScreenPosition);
 
             if (Physics.Raycast(ray, out RaycastHit hit))
             {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FishPatrol : MonoBehaviour
+public class FishControl : MonoBehaviour
 {
     [Header("Pergerakan Renang")]
     public float moveSpeed = 1.5f;

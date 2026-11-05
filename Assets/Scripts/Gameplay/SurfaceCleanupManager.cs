@@ -99,6 +99,13 @@ public class SurfaceCleanupManager : MonoBehaviour
         yield return new WaitForSeconds(3.5f);
 
         // Pindah ke gameplay menyelam
-        SceneManager.LoadScene("Scene02_DeepSeaDive");
+        if (GameFlowManager.Instance != null)
+        {
+            GameFlowManager.Instance.GoToDeepSeaDive();
+        }
+        else
+        {
+            SceneManager.LoadScene("Scene02_DeepSeaDive");
+        }
     }
 }

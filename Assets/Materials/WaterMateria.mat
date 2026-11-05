@@ -43,11 +43,11 @@ Material:
     - _RippleOpacity: 0
     - _RippleSlimness: 8
     - _RippleSpeed: 3
-    - _RippleTime: 1.5005935
+    - _RippleTime: 0
     - _RippleWitdh: 0.005
     m_Colors:
     - _BaseColor: {r: 0, g: 0.35686278, b: 0.6117647, a: 0}
-    - _RippleCenter: {r: 0.5585027, g: 0.5102965, b: 0, a: 0}
+    - _RippleCenter: {r: 0.33955634, g: 0.40545973, b: 0, a: 0}
     - _RippleColor: {r: 0, g: 0.6196079, b: 0.8588235, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4923874782412790631
