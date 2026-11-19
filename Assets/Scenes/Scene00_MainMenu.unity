@@ -531,7 +531,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 359d3db1efe1b8d4e8882fb6f5394f1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useMouseForDebug: 1
+  currentInputMode: 1
+  allowMouseOverride: 1
+  udpPort: 5065
+  smoothingSpeed: 15
   enableIdleTimeout: 0
   idleTimeoutSeconds: 15
 --- !u!4 &723199303
@@ -1612,7 +1615,10 @@ MonoBehaviour:
   videoPlayer: {fileID: 0}
   opening0Clip: {fileID: 32900000, guid: b8cd5022682df2346aa2dbce2d735e31, type: 3}
   opening1Clip: {fileID: 32900000, guid: 8ea76fd8297c2284591ff034ce02758d, type: 3}
+  opening1VoiceSource: {fileID: 0}
+  opening1Voice: {fileID: 8300000, guid: 8169a9f0a29a5e543a7c00315b170541, type: 3}
   attractPanel: {fileID: 663574177}
+  attractPanelCanvasGroup: {fileID: 0}
   menuPanel: {fileID: 504078815}
   menuPanelCanvasGroup: {fileID: 0}
   fadeOverlayImage: {fileID: 0}

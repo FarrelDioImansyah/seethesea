@@ -13,6 +13,10 @@ public class MainMenuManager : MonoBehaviour
     public VideoClip opening0Clip;
     public VideoClip opening1Clip;
 
+    [Header("Voice Setelah Opening 1")]
+    public AudioSource opening1VoiceSource;
+    public AudioClip opening1Voice;
+
     [Header("UI Panels")]
     public GameObject attractPanel;   // Teks "Angkat tanganmu untuk memulai"
     public CanvasGroup attractPanelCanvasGroup;
@@ -283,8 +287,9 @@ public class MainMenuManager : MonoBehaviour
         }
         else
         {
-            StartCoroutine(TransitionToEarthAndMenuRoutine());
+            StartCoroutine(PlayOpening1VoiceThenShowMenuRoutine());
         }
+
     }
 
     private void OnOpening1Finished(VideoPlayer source)
@@ -294,7 +299,31 @@ public class MainMenuManager : MonoBehaviour
             videoPlayer.loopPointReached -= OnOpening1Finished;
         }
 
-        StartCoroutine(TransitionToEarthAndMenuRoutine());
+        StartCoroutine(PlayOpening1VoiceThenShowMenuRoutine());
+    }
+
+    private IEnumerator PlayOpening1VoiceThenShowMenuRoutine()
+    {
+        if (opening1VoiceSource == null)
+        {
+            opening1VoiceSource = gameObject.GetComponent<AudioSource>();
+            if (opening1VoiceSource == null)
+            {
+                opening1VoiceSource = gameObject.AddComponent<AudioSource>();
+            }
+        }
+
+        if (opening1Voice == null)
+        {
+            Debug.LogError("[MainMenu] Voice setelah Opening 1 belum diisi.");
+        }
+        else
+        {
+            opening1VoiceSource.clip = opening1Voice;
+            opening1VoiceSource.Play();
+        }
+
+        yield return StartCoroutine(TransitionToEarthAndMenuRoutine());
     }
 
     private IEnumerator TransitionToEarthAndMenuRoutine()

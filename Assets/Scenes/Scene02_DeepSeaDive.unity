@@ -756,6 +756,8 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
+  welcomeVoiceSource: {fileID: 0}
+  welcomeVoice: {fileID: 8300000, guid: 127addc84b30b6e4ab213e0002d5e141, type: 3}
 --- !u!1 &1128007458
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,7 +787,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 359d3db1efe1b8d4e8882fb6f5394f1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useMouseForDebug: 1
+  currentInputMode: 1
+  allowMouseOverride: 1
+  udpPort: 5065
+  smoothingSpeed: 15
   enableIdleTimeout: 0
   idleTimeoutSeconds: 15
 --- !u!4 &1128007460
@@ -837,9 +842,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursorRectTransform: {fileID: 0}
   radialProgressFill: {fileID: 0}
+  cursorCanvasGroup: {fileID: 0}
   interactableLayer:
     serializedVersion: 2
     m_Bits: 4294967295
+  cursorSize: 60
+  normalColor: {r: 0.2, g: 0.8, b: 1, a: 0.75}
+  dwellColor: {r: 0.4, g: 1, b: 0.5, a: 0.95}
 --- !u!114 &1146580435
 MonoBehaviour:
   m_ObjectHideFlags: 0

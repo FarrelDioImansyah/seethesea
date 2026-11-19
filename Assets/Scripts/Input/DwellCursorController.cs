@@ -249,9 +249,11 @@ public class DwellCursorController : MonoBehaviour
         if (cam != null)
         {
             Ray ray = cam.ScreenPointToRay(screenPos);
-            if (Physics.Raycast(ray, out RaycastHit hit, 500f, interactableLayer))
+        RaycastHit[] hits = Physics.RaycastAll(ray, 500f, interactableLayer);
+        System.Array.Sort(hits, (first, second) => first.distance.CompareTo(second.distance));
+        foreach (RaycastHit hit in hits)
             {
-                InteractableItem item = hit.collider.GetComponent<InteractableItem>();
+                InteractableItem item = hit.collider.GetComponentInParent<InteractableItem>();
                 if (item != null && item.isInteractable)
                 {
                     ProcessHover(item);
@@ -259,10 +261,10 @@ public class DwellCursorController : MonoBehaviour
                 }
             }
 
-            RaycastHit2D hit2D = Physics2D.GetRayIntersection(ray, 500f, interactableLayer);
-            if (hit2D.collider != null)
+        RaycastHit2D[] hits2D = Physics2D.GetRayIntersectionAll(ray, 500f, interactableLayer);
+        foreach (RaycastHit2D hit2D in hits2D)
             {
-                InteractableItem item2D = hit2D.collider.GetComponent<InteractableItem>();
+                InteractableItem item2D = hit2D.collider.GetComponentInParent<InteractableItem>();
                 if (item2D != null && item2D.isInteractable)
                 {
                     ProcessHover(item2D);

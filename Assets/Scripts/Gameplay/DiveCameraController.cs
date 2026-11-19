@@ -26,9 +26,14 @@ public class DiveCameraController : MonoBehaviour
     [Header("Pengaturan Fog / Kegelapan")]
     public Gradient waterDepthGradient;    // Biru cerah -> Biru gelap pekat
 
+    [Header("Voice Sambutan Scene 2")]
+    public AudioSource welcomeVoiceSource;
+    public AudioClip welcomeVoice;
+
     private bool isPaused = false;
     private bool isSlowedDown = false;
     private bool isEndingTriggered = false;
+    private bool isWelcomeFinished = false;
 
     private void Awake()
     {
@@ -51,12 +56,14 @@ public class DiveCameraController : MonoBehaviour
         {
             endingPanel.SetActive(false);
         }
+
+        StartCoroutine(PlayWelcomeVoiceRoutine());
     }
 
     private void Update()
     {
         // 1. Gerakkan kamera turun jika belum sampai kedalaman maksimal
-        if (!isPaused && transform.position.y > maxDepthUnits)
+        if (!isPaused && isWelcomeFinished && transform.position.y > maxDepthUnits)
         {
             float targetSpeed = isSlowedDown ? (normalSpeed * 0.2f) : normalSpeed;
             currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, Time.deltaTime * 5f);
@@ -77,6 +84,34 @@ public class DiveCameraController : MonoBehaviour
 
         // 3. Perbarui nama zona & warna fog lingkungan
         UpdateZoneAndVisuals(transform.position.y, currentDepthMeters);
+    }
+
+    private IEnumerator PlayWelcomeVoiceRoutine()
+    {
+        if (welcomeVoiceSource == null)
+        {
+            welcomeVoiceSource = gameObject.GetComponent<AudioSource>();
+            if (welcomeVoiceSource == null)
+            {
+                welcomeVoiceSource = gameObject.AddComponent<AudioSource>();
+            }
+        }
+
+        if (welcomeVoice == null)
+        {
+            Debug.LogError("[DiveCamera] Welcome Voice belum diisi.");
+            isWelcomeFinished = true;
+            yield break;
+        }
+
+        isPaused = true;
+        welcomeVoiceSource.clip = welcomeVoice;
+        welcomeVoiceSource.Play();
+
+        yield return new WaitForSeconds(welcomeVoice.length);
+
+        isWelcomeFinished = true;
+        isPaused = false;
     }
 
     private void TriggerEndingSequence()
